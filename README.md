@@ -7,7 +7,6 @@
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 [![XGBoost](https://img.shields.io/badge/XGBoost-enabled-brightgreen)](https://xgboost.readthedocs.io/)
-[![LightGBM](https://img.shields.io/badge/LightGBM-enabled-9cf)](https://lightgbm.readthedocs.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 </div>
@@ -168,15 +167,8 @@ The full set of 48 per-feature boxplots is available in [`images/`](images/) for
 
 | Algorithm | Library |
 |---|---|
-| Logistic Regression | scikit-learn |
-| Support Vector Classifier | scikit-learn |
-| K-Nearest Neighbors | scikit-learn |
-| Decision Tree | scikit-learn |
 | Random Forest | scikit-learn |
-| AdaBoost | scikit-learn |
-| Gradient Boosting | scikit-learn |
 | XGBoost | xgboost |
-| LightGBM | lightgbm |
 | CatBoost | catboost |
 | Voting Classifier (ensemble) | scikit-learn |
 
@@ -192,7 +184,6 @@ The full set of 48 per-feature boxplots is available in [`images/`](images/) for
 |---|---|---|---|---|---|
 | Random Forest | — | — | — | — | — |
 | XGBoost | — | — | — | — | — |
-| LightGBM | — | — | — | — | — |
 | Voting Ensemble | — | — | — | — | — |
 
 **Confusion Matrix (best model):**
@@ -242,7 +233,6 @@ seaborn
 matplotlib
 scikit-learn
 xgboost
-lightgbm
 catboost
 joblib
 ```
@@ -264,7 +254,7 @@ joblib
 
 ## 🧰 Tech Stack
 
-`Python` · `pandas` · `NumPy` · `scikit-learn` · `XGBoost` · `LightGBM` · `CatBoost` · `Matplotlib` · `Seaborn` · `joblib`
+`Python` · `pandas` · `NumPy` · `scikit-learn` · `XGBoost` · `CatBoost` · `Matplotlib` · `Seaborn` · `joblib`
 
 ## 📚 Reference
 
