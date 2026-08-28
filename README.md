@@ -182,9 +182,9 @@ The full set of 48 per-feature boxplots is available in [`images/`](images/) for
 
 | Model | Accuracy | ROC-AUC | F1 | Precision | Recall |
 |---|---|---|---|---|---|
-| Random Forest | — | — | — | — | — |
-| XGBoost | — | — | — | — | — |
-| Voting Ensemble | — | — | — | — | — |
+| Random Forest |  0.9912 | 0.9998 | 0.9916 |  0.9933 | 0.9929 |
+| XGBoost | 0.9947 | 0.9998 | 0.9950 | 0.9953 | 0.9953  |
+| Voting Ensemble | 0.9945 | 0.9998 | 0.9947 |    0.9953  |   0.9953 |
 
 **Confusion Matrix (best model):**
 
