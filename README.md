@@ -105,11 +105,9 @@ Use given requirement.txt file in repo.
 
 # Implemented Machine Learning Algorithms
 
-- KNN
-- Decision Tree (CART)
+
 - Random Forest
 - XGBoost
-- LightGBM
 
 # Results
 Drop List:
@@ -136,11 +134,8 @@ EXP_NO definitely should dropped out, since it memorize according to experiment 
 <table>
   <tr>
     <td></td>
-    <td style="text-align:center;" colspan="2">KNN</td>
-    <td style="text-align:center;" colspan="2">Decision Tree</td>
     <td style="text-align:center;" colspan="2">Random Forest</td>
     <td style="text-align:center;" colspan="2">XGBoost</td>
-    <td style="text-align:center;" colspan="2">LightGBM</td>
   </tr>
   <tr>
     <td><b>How to Splitted</b></td>
@@ -148,51 +143,27 @@ EXP_NO definitely should dropped out, since it memorize according to experiment 
     <td>Stratify</td>
     <td>TVT</td>
     <td>Stratify</td>
-    <td>TVT</td>
-    <td>Stratify</td>
-    <td>TVT</td>
-    <td>Stratify</td>
-    <td>TVT</td>
-    <td>Stratify</td>
   </tr>
   <tr>
     <td>Base Model</td>
-    <td>0.9125</td>
-    <td><b>0.9147</b></td>
-    <td>0.9865</td>
-    <td><b>0.9884</b></td>
     <td>0.9939</td>
     <td><b>0.9943</b></td>
     <td>0.9958</td>
     <td><b>0.996</b></td>
-    <td>0.9956</td>
-    <td><b>0.9959</b></td>
   </tr>
   <tr>
     <td>Hyperparameter</td>
-    <td>0.9249</td>
-    <td><b>0.928</b></td>
-    <td>0.9867</td>
-    <td><b>0.9883</b></td>
     <td>0.9922</td>
     <td><b>0.9932</b></td>
     <td>0.9963</td>
     <td><b>0.9968</b></td>
-    <td>0.9974</td>
-    <td><b>0.9978</b></td>
   </tr>
   <tr>
     <td>Test</td>
-    <td>0.9278</td>
-    <td><b>0.9306</b></td>
-    <td>0.9881</td>
-    <td>0.9866</td>
     <td><b>0.9949</b></td>
     <td>0.9921</td>
     <td><b>0.997</b></td>
     <td>0.9962</td>
-    <td><b>0.9986</b></td>
-    <td>0.9972</td>
   </tr>
 </table>
 
@@ -201,11 +172,8 @@ EXP_NO definitely should dropped out, since it memorize according to experiment 
 <table>
   <tr>
     <td></td>
-    <td style="text-align:center;" colspan="2">KNN</td>
-    <td style="text-align:center;" colspan="2">Decision Tree</td>
     <td style="text-align:center;" colspan="2">Random Forest</td>
     <td style="text-align:center;" colspan="2">XGBoost</td>
-    <td style="text-align:center;" colspan="2">LightGBM</td>
   </tr>
   <tr>
     <td><b>How to Splitted</b></td>
@@ -213,51 +181,27 @@ EXP_NO definitely should dropped out, since it memorize according to experiment 
     <td>Stratify</td>
     <td>TVT</td>
     <td>Stratify</td>
-    <td>TVT</td>
-    <td>Stratify</td>
-    <td>TVT</td>
-    <td>Stratify</td>
-    <td>TVT</td>
-    <td>Stratify</td>
   </tr>
   <tr>
     <td>Base Model</td>
-    <td><b>0.8718</b></td>
-    <td>0.8687</td>
-    <td>0.987</td>
-    <td><b>0.9895</b></td>
     <td>0.9887</td>
     <td><b>0.9899</b></td>
     <td>0.9945</td>
     <td><b>0.9951</b></td>
-    <td><b>0.9951</b></td>
-    <td>0.995</td>
   </tr>
   <tr>
     <td>Hyperparameter</td>
-    <td><b>0.8722</b></td>
-    <td>0.8716</td>
-    <td><b>0.9905</b></td>
-    <td>0.9898</td>
     <td>0.9905</td>
     <td><b>0.9906</b></td>
     <td>0.9951</td>
     <td><b>0.9952</b></td>
-    <td>0.997</td>
-    <td><b>0.9973</b></td>
   </tr>
   <tr>
     <td>Test</td>
-    <td><b>0.8778</b></td>
-    <td>0.8764</td>
-    <td>0.9885</td>
-    <td><b>0.9893</b></td>
     <td>0.9931</td>
     <td><b>0.9891</b></td>
     <td>0.9974</td>
     <td>0.9962</td>
-    <td><b>0.9984</b></td>
-    <td>0.9974</td>
   </tr>
 </table>
 
@@ -266,35 +210,23 @@ EXP_NO definitely should dropped out, since it memorize according to experiment 
 <table>
   <tr>
     <td></td>
-    <td style="text-align:center;" colspan="1">KNN</td>
-    <td style="text-align:center;" colspan="1">Decision Tree</td>
     <td style="text-align:center;" colspan="1">Random Forest</td>
     <td style="text-align:center;" colspan="1">XGBoost</td>
-    <td style="text-align:center;" colspan="1">LightGBM</td>
   </tr>
   <tr>
     <td>Base Model</td>
-    <td style="text-align:center;">0.9147</td>
-    <td style="text-align:center;">0.9884</td>
     <td style="text-align:center;">0.9943</td>
     <td style="text-align:center;"><b>0.996<</b></td>
-    <td style="text-align:center;">0.9959</td>
   </tr>
   <tr>
     <td>Hyperparameter</td>
-    <td style="text-align:center;">0.9242</td>
-    <td style="text-align:center;">0.9883</td>
     <td style="text-align:center;">0.9932</td>
     <td style="text-align:center;">0.9968</td>
-    <td style="text-align:center;"><b>0.9978<</b></td>
   </tr>
   <tr>
     <td >Test</td>
-    <td style="text-align:center;">0.9306</td>
-    <td style="text-align:center;">0.9866</td>
     <td style="text-align:center;">0.9921</td>
     <td style="text-align:center;">0.9962</td>
-    <td style="text-align:center;"><b>0.9972<</b></td>
   </tr>
 </table>
 
@@ -303,39 +235,27 @@ EXP_NO definitely should dropped out, since it memorize according to experiment 
 <table>
   <tr>
     <td></td>
-    <td style="text-align:center;" colspan="1">KNN</td>
-    <td style="text-align:center;" colspan="1">Decision Tree</td>
     <td style="text-align:center;" colspan="1">Random Forest</td>
     <td style="text-align:center;" colspan="1">XGBoost</td>
-    <td style="text-align:center;" colspan="1">LightGBM</td>
   </tr>
   <tr>
     <td>Base Model</td>
-    <td style="text-align:center;">0.8687</td>
-    <td style="text-align:center;">0.9895</td>
     <td style="text-align:center;">0.9899</td>
     <td style="text-align:center;"><b>0.9951<</b></td>
-    <td style="text-align:center;">0.995</td>
   </tr>
   <tr>
     <td>Hyperparameter</td>
-    <td style="text-align:center;">0.8716</td>
-    <td style="text-align:center;">0.9898</td>
     <td style="text-align:center;">0.9906</td>
     <td style="text-align:center;">0.9952</td>
-    <td style="text-align:center;"><b>0.9973<</b></td>
   </tr>
   <tr>
     <td >Test</td>
-    <td style="text-align:center;">0.8764</td>
-    <td style="text-align:center;">0.9893</td>
     <td style="text-align:center;">0.9891</td>
     <td style="text-align:center;">0.9962</td>
-    <td style="text-align:center;"><b>0.9974<</b></td>
   </tr>
 </table>
 
 # Discussion
 
 # Referance
-Dataset: Bergs, T. et al., System-level Manufacturing and Automation Research Testbed (SMART), University of Michigan —[Tool Wear Detection in CNC Mill.]([url](https://www.kaggle.com/datasets/shasun/tool-wear-detection-in-cnc-mill))
+Dataset: Bergs, T. et al., *System-level Manufacturing and Automation Research Testbed (SMART)*, University of Michigan — [Tool Wear Detection in CNC Mill](https://www.kaggle.com/datasets/shasun/tool-wear-detection-in-cnc-mill).
