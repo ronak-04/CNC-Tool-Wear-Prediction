@@ -274,8 +274,3 @@ Dataset: Bergs, T. et al., *System-level Manufacturing and Automation Research T
 
 This project is licensed under the [MIT License](LICENSE).
 
-## 👤 Author
-
-**Muhammet Ali Aykanat**
-
-[![GitHub](https://img.shields.io/badge/GitHub-MAAykanat-181717?logo=github)](https://github.com/MAAykanat)
