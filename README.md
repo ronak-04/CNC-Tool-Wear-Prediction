@@ -1,261 +1,281 @@
-# Table of Contents
+<div align="center">
 
-   * [About Repo](#about-repo)
-   * [Dataset](#dataset)
-   * [Requirements](#requirements)
-   * [Code Explanation](#code-explanation)
-   * [Methods](#methods)
-   * [Implemented Machine Learning Algorithms](#implemented-machine-learning-algorithms)
-   * [Results](#results)
-   * [Discussion](#discussion)
-   * [Referance](#referance)
-   * [Authors](#authors)
+# 🛠️ CNC Tool Wear Detection
 
-# About Repo
+**Predicting cutting-tool wear on a CNC milling machine from real-time sensor telemetry**
 
-    Hands-on implementation and classification on tool wear of CNC milling machine. 
+[![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
+[![XGBoost](https://img.shields.io/badge/XGBoost-enabled-brightgreen)](https://xgboost.readthedocs.io/)
+[![LightGBM](https://img.shields.io/badge/LightGBM-enabled-9cf)](https://lightgbm.readthedocs.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-# Dataset
-
-Link of dataset:
-
-   
-    https://www.kaggle.com/datasets/shasun/tool-wear-detection-in-cnc-mill
-   
-
-Dataset created by System-level Manufacturing and Automation Research Testbed (SMART) at the University of Michigan in April 2018.
-
-**Inputs (features)**
-
-**No :** experiment number
-
-**material :** wax
-
-**feed_rate :** relative velocity of the cutting tool along the workpiece (mm/s)
-
-**clamp_pressure :** pressure used to hold the workpiece in the vise (bar)
-
-**Outputs (predictions)**
-
-**tool_condition :** label for unworn and worn tools
-
-**machining_completed :** indicator for if machining was completed without the workpiece moving out of the pneumatic vise
-
-**passed_visual_inspection:** indicator for if the workpiece passed visual inspection, only available for experiments where machining was completed
-
-- **18 different** experiment has been implemented.
-- By train.csv, results are **labelled**.
-
-# Requirements
-
-Use given requirement.txt file in repo.
-
-- Python Version :
-
-  ```
-  Python 3.10.11
-  ```
-
-- Using pip :
-
-  ```terminal
-  pip install -r requirements/requirements.txt
-  ```
-
-# Code Explanation
-    3 main code to handle research
-        - combine_dataset.py
-        - tool_wear_detection_research.py
-        - tool_wear_model.py:
-- combine_dataset.py:
-    
-    To handle dataset, experiments and results are combined to begin research. 
-    Dataset set combine by using **18 experiment (experiment_{}.csv)** and their **tool_condition** on **train.csv**
-
-- tool_wear_detection_research.py
-
-    **EDA (Exploratory Data Analysis)** to dataset both for experiments and train sets.
-    
-    **Feature Engineering** to feed and train the model. 
-
-    Output will be use to model.
-
-    Output: 
-    - combined_cleaned.csv
-    - combined_cleaned_without_droplist.csv
-
-- tool_wear_model.py: 
-
-    Automated code for modelling, hyperparameter optimization and evaluation results.
-    
-    Results can be given with/without graph as desired.
-
-# Methods
-- There is created drop list according to correlation is higher than 90%. 
-    
-    - By using this list 2 different dataset created
-        - combined_cleaned.csv --> drop Drop_list 
-        - combined_cleaned_without_droplist.csv --> not drop Drop_list
-
-    - Model splitted into train and test sets (80-20)
-        - With stratify
-        - Without stratfy
-
-- 10 Fold-Cross Validation implemented
-
-# Implemented Machine Learning Algorithms
-
-
-- Random Forest
-- XGBoost
-
-# Results
-Drop List:
-- MACHINING_PROCESS,
-- Z1_CURRENTFEEDBACK,
-- Z1_DCBUSVOLTAGE,
-- Z1_OUTPUTCURRENT,
-- Z1_OUTPUTVOLTAGE,
-- S1_COMMANDACCELERATION,
-- S1_SYSTEMINERTIA,
-- M1_CURRENT_PROGRAM_NUMBER,
-- M1_SEQUENCE_NUMBER,
-- M1_CURRENT_FEEDRATE,
-- EXP_NO,
-- Z1_COMMANDVELOCITY,
-- Z1_COMMANDACCELERATION
-
-EXP_NO definitely should dropped out, since it memorize according to experiment numbers.
+</div>
 
 ---
 
-    Without Drop List 
+## 📋 Table of Contents
 
-<table>
-  <tr>
-    <td></td>
-    <td style="text-align:center;" colspan="2">Random Forest</td>
-    <td style="text-align:center;" colspan="2">XGBoost</td>
-  </tr>
-  <tr>
-    <td><b>How to Splitted</b></td>
-    <td>TVT</td>
-    <td>Stratify</td>
-    <td>TVT</td>
-    <td>Stratify</td>
-  </tr>
-  <tr>
-    <td>Base Model</td>
-    <td>0.9939</td>
-    <td><b>0.9943</b></td>
-    <td>0.9958</td>
-    <td><b>0.996</b></td>
-  </tr>
-  <tr>
-    <td>Hyperparameter</td>
-    <td>0.9922</td>
-    <td><b>0.9932</b></td>
-    <td>0.9963</td>
-    <td><b>0.9968</b></td>
-  </tr>
-  <tr>
-    <td>Test</td>
-    <td><b>0.9949</b></td>
-    <td>0.9921</td>
-    <td><b>0.997</b></td>
-    <td>0.9962</td>
-  </tr>
-</table>
+- [Overview](#-overview)
+- [Problem Statement](#-problem-statement)
+- [Dataset](#-dataset)
+- [Methodology](#-methodology)
+- [Exploratory Data Analysis](#-exploratory-data-analysis)
+- [Feature Engineering](#-feature-engineering)
+- [Modelling](#-modelling)
+- [Results](#-results)
+- [Repository Structure](#-repository-structure)
+- [Getting Started](#-getting-started)
+- [Roadmap](#-roadmap)
+- [Tech Stack](#-tech-stack)
+- [Reference](#-reference)
+- [License](#-license)
+- [Author](#-author)
 
-    With Drop List 
+---
 
-<table>
-  <tr>
-    <td></td>
-    <td style="text-align:center;" colspan="2">Random Forest</td>
-    <td style="text-align:center;" colspan="2">XGBoost</td>
-  </tr>
-  <tr>
-    <td><b>How to Splitted</b></td>
-    <td>TVT</td>
-    <td>Stratify</td>
-    <td>TVT</td>
-    <td>Stratify</td>
-  </tr>
-  <tr>
-    <td>Base Model</td>
-    <td>0.9887</td>
-    <td><b>0.9899</b></td>
-    <td>0.9945</td>
-    <td><b>0.9951</b></td>
-  </tr>
-  <tr>
-    <td>Hyperparameter</td>
-    <td>0.9905</td>
-    <td><b>0.9906</b></td>
-    <td>0.9951</td>
-    <td><b>0.9952</b></td>
-  </tr>
-  <tr>
-    <td>Test</td>
-    <td>0.9931</td>
-    <td><b>0.9891</b></td>
-    <td>0.9974</td>
-    <td>0.9962</td>
-  </tr>
-</table>
+## 📖 Overview
 
-    Classification Report - Without Drop List
+CNC (Computer Numerical Control) milling tools degrade with use, and a worn tool directly affects part quality, dimensional accuracy, and surface finish. Detecting wear early — ideally from the machine's own control signals rather than manual inspection — can reduce scrap, prevent damage to the workpiece, and cut unplanned downtime.
 
-<table>
-  <tr>
-    <td></td>
-    <td style="text-align:center;" colspan="1">Random Forest</td>
-    <td style="text-align:center;" colspan="1">XGBoost</td>
-  </tr>
-  <tr>
-    <td>Base Model</td>
-    <td style="text-align:center;">0.9943</td>
-    <td style="text-align:center;"><b>0.996<</b></td>
-  </tr>
-  <tr>
-    <td>Hyperparameter</td>
-    <td style="text-align:center;">0.9932</td>
-    <td style="text-align:center;">0.9968</td>
-  </tr>
-  <tr>
-    <td >Test</td>
-    <td style="text-align:center;">0.9921</td>
-    <td style="text-align:center;">0.9962</td>
-  </tr>
-</table>
+This project trains machine learning classifiers to predict whether a CNC mill's cutting tool is **worn** or **unworn**, using only the numeric signals already logged by the machine controller (axis position, velocity, acceleration, current, voltage, power) — no additional sensors required.
 
-    Classification Report - With Drop List
+## 🎯 Problem Statement
 
-<table>
-  <tr>
-    <td></td>
-    <td style="text-align:center;" colspan="1">Random Forest</td>
-    <td style="text-align:center;" colspan="1">XGBoost</td>
-  </tr>
-  <tr>
-    <td>Base Model</td>
-    <td style="text-align:center;">0.9899</td>
-    <td style="text-align:center;"><b>0.9951<</b></td>
-  </tr>
-  <tr>
-    <td>Hyperparameter</td>
-    <td style="text-align:center;">0.9906</td>
-    <td style="text-align:center;">0.9952</td>
-  </tr>
-  <tr>
-    <td >Test</td>
-    <td style="text-align:center;">0.9891</td>
-    <td style="text-align:center;">0.9962</td>
-  </tr>
-</table>
+> Given the time-series control signals recorded during a single machining pass, can we classify the tool used in that pass as **worn** or **unworn**?
 
-# Discussion
+This is framed as a **binary classification** problem over per-timestep sensor readings, using labels collected at the experiment level (each of 18 machining experiments has one ground-truth tool condition, shared across all of that experiment's readings).
 
-# Referance
+## 📊 Dataset
+
+**Source:** [Tool Wear Detection in CNC Mill](https://www.kaggle.com/datasets/shasun/tool-wear-detection-in-cnc-mill) (Kaggle), produced by the System-level Manufacturing and Automation Research Testbed (SMART) at the University of Michigan.
+
+The dataset covers 18 experiments milling a wax workpiece under varying feed rate and clamp pressure settings.
+
+**`train.csv`** — one row per experiment:
+
+| Column | Description |
+|---|---|
+| `No` | Experiment number |
+| `material` | Workpiece material (wax) |
+| `feedrate` | Relative velocity of the cutting tool along the workpiece (mm/s) |
+| `clamp_pressure` | Pressure used to hold the workpiece in the vise (bar) |
+| `tool_condition` | **Target label** — `worn` / `unworn` |
+| `machining_finalized` | Whether machining completed without the workpiece shifting out of the vise |
+| `passed_visual_inspection` | Visual inspection result (only populated when machining finished) |
+
+**`experiment_01.csv` … `experiment_18.csv`** — one file per experiment, logging the time-series controller signal for that pass:
+
+| Signal group | Channels |
+|---|---|
+| `X1_ / Y1_ / Z1_` (axis servos) | Actual & command position, velocity, acceleration, current feedback, DC bus voltage, output current/voltage/power |
+| `S1_` (spindle) | Actual & command position/velocity/acceleration, current feedback, DC bus voltage, output current/voltage/power, system inertia |
+| `M1_` (controller) | Current program number, sequence number, current feedrate |
+| `Machining_Process` | Categorical stage label (`Starting`, `Prep`, `Layer 1 Up`, `End`, …) |
+
+All 18 experiment files are required for the combination step (`range(1, 19)` in the notebook).
+
+**Combined dataset:** 18 experiments → **25,286 rows × 52 columns** after merging with labels.
+
+## 🔬 Methodology
+
+The notebook runs end-to-end through five stages:
+
+```
+train.csv + experiment_01..18.csv
+        │
+        ▼
+ 1. Data Combination  ──▶  aggregated.csv
+        │
+        ▼
+ 2. Exploratory Data Analysis (EDA)
+        │
+        ▼
+ 3. Cleaning Decisions  (drop constant/redundant cols, encode target)
+        │
+        ▼
+ 4. Feature Engineering  ──▶  aggregated_cleaned.csv
+        │                     aggregated_train_cleaned.csv / aggregated_test_cleaned.csv
+        ▼
+ 5. Modelling  ──▶  models/*.pkl
+```
+
+### 1. Data Combination
+- Load `train.csv` and all 18 `experiment_XX.csv` files.
+- Fill missing `passed_visual_inspection` values with `'no'`.
+- Attach `feedrate`, `clamp_pressure`, and a derived `target` (`worn`/`unworn`) to every row of each experiment from the matching `train.csv` record.
+- Concatenate all experiments and save as `aggregated.csv`.
+
+### 3. Cleaning Decisions
+- Uppercase all column names.
+- Drop `EXP_NO` — a cardinal ID that would let a model memorize the experiment instead of learning from sensor signal.
+- Encode `TARGET` to binary: `1 = worn`, `0 = unworn`.
+- Convert `FEEDRATE` / `CLAMP_PRESSURE` to numeric.
+- Candidate drop columns identified from the unique-value analysis (near-constant or misleading):
+
+  ```
+  MACHINING_PROCESS, Z1_CURRENTFEEDBACK, Z1_DCBUSVOLTAGE, Z1_OUTPUTCURRENT,
+  Z1_OUTPUTVOLTAGE, S1_COMMANDACCELERATION, S1_SYSTEMINERTIA,
+  M1_CURRENT_PROGRAM_NUMBER, M1_SEQUENCE_NUMBER, M1_CURRENT_FEEDRATE
+  ```
+
+- Candidate drop columns from correlation analysis (|r| > 0.95):
+
+  ```
+  X1_COMMANDPOSITION, X1_COMMANDVELOCITY, Y1_COMMANDPOSITION, Y1_COMMANDVELOCITY,
+  Z1_COMMANDPOSITION, S1_COMMANDPOSITION, S1_COMMANDVELOCITY, S1_DCBUSVOLTAGE,
+  S1_OUTPUTVOLTAGE, S1_OUTPUTPOWER
+  ```
+
+## 📈 Exploratory Data Analysis
+
+Custom helper functions drive the EDA:
+
+| Function | Purpose |
+|---|---|
+| `check_df()` | Shape, dtypes, head/tail, NA counts, quantiles |
+| `grap_column_names()` | Splits columns into categorical / numeric / categorical-but-cardinal |
+| `cat_summary()` | Frequency table for a categorical column |
+| `numerical_col_summary()` | Distribution summary for a numeric column |
+| `target_summary_with_cat()` | Target rate by categorical feature |
+| `target_summary_with_num()` | Target mean/median by numeric feature |
+| `outlier_thresholds()` / `check_outlier()` | IQR-based outlier detection (5th/95th percentile bounds) |
+| `high_correlated_cols()` | Flags feature pairs with correlation above a threshold |
+
+Key visuals (in [`images/`](images/) — 50 plots total: target distribution, full correlation matrix, and a worn-vs-unworn boxplot for every numeric feature):
+
+| Target distribution | Correlation matrix |
+|---|---|
+| ![target distribution](images/target_distribution.png) | ![correlation matrix](images/correlation_matrix.png) |
+
+**Worn vs. unworn — example features:**
+
+| Spindle current feedback | X-axis output power |
+|---|---|
+| ![S1 current feedback boxplot](images/boxplot_S1_CURRENTFEEDBACK.png) | ![X1 output power boxplot](images/boxplot_X1_OUTPUTPOWER.png) |
+
+The full set of 48 per-feature boxplots is available in [`images/`](images/) for closer inspection.
+
+## 🧪 Feature Engineering
+
+- Re-derive categorical vs. numeric columns.
+- One-hot encode remaining categorical columns (`drop_first=True`).
+- Min-max scale all numeric columns.
+- Save `aggregated_cleaned.csv`.
+- Shuffle and split 80/20 into `aggregated_train_cleaned.csv` / `aggregated_test_cleaned.csv`.
+
+## 🤖 Modelling
+
+| Algorithm | Library |
+|---|---|
+| Logistic Regression | scikit-learn |
+| Support Vector Classifier | scikit-learn |
+| K-Nearest Neighbors | scikit-learn |
+| Decision Tree | scikit-learn |
+| Random Forest | scikit-learn |
+| AdaBoost | scikit-learn |
+| Gradient Boosting | scikit-learn |
+| XGBoost | xgboost |
+| LightGBM | lightgbm |
+| CatBoost | catboost |
+| Voting Classifier (ensemble) | scikit-learn |
+
+- `X`/`y` split on `TARGET`; `train_test_split` 80/20, stratified.
+- `base_models()` cross-validates candidate estimators and reports ROC-AUC / accuracy via `cross_validate`.
+- Best-performing estimators are saved with `joblib` to `models/` (`rf_model.pkl`, `xgboost_model.pkl`, `voting_clf.pkl`).
+
+## 🏆 Results
+
+> Fill in after running the hyperparameter-tuned models — see [Roadmap](#-roadmap).
+
+| Model | Accuracy | ROC-AUC | F1 | Precision | Recall |
+|---|---|---|---|---|---|
+| Random Forest | — | — | — | — | — |
+| XGBoost | — | — | — | — | — |
+| LightGBM | — | — | — | — | — |
+| Voting Ensemble | — | — | — | — | — |
+
+**Confusion Matrix (best model):**
+
+```
+[add plot from ConfusionMatrixDisplay, saved to images/confusion_matrix.png]
+```
+
+## 📁 Repository Structure
+
+```
+.
+├── CNC1.ipynb                       # main notebook: combine → EDA → feature engineering → modelling
+├── train.csv                        # experiment labels
+├── experiment_01.csv … experiment_18.csv   # per-experiment sensor logs
+├── images/                          # generated: EDA & result plots
+├── models/                          # generated: saved .pkl models
+├── aggregated.csv                   # generated: all experiments combined
+├── aggregated_cleaned.csv           # generated: encoded + scaled
+├── aggregated_train_cleaned.csv     # generated: 80% split
+├── aggregated_test_cleaned.csv      # generated: 20% split
+├── requirements.txt
+├── LICENSE
+└── README.md
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Python 3.9+
+- `pip`
+
+### Installation
+
+```bash
+git clone https://github.com/MAAykanat/CNC-Tool-Wear-Detection.git
+cd CNC-Tool-Wear-Detection
+pip install -r requirements.txt
+```
+
+### Requirements
+
+```
+numpy
+pandas
+seaborn
+matplotlib
+scikit-learn
+xgboost
+lightgbm
+catboost
+joblib
+```
+
+### Usage
+
+1. Place `train.csv` and `experiment_01.csv` – `experiment_18.csv` in the project root (already included in this repo).
+2. Open `CNC1.ipynb` and run all cells top to bottom — each stage reads the file the previous stage wrote, so order matters.
+3. Generated plots land in `images/`, trained models in `models/`.
+
+## 🗺️ Roadmap
+
+- [ ] Wire up hyperparameter search (`GridSearchCV`/`RandomizedSearchCV`) for each estimator and populate `best_models`
+- [ ] Build the `VotingClassifier` over tuned models before the `joblib.dump` step
+- [ ] Decide on and apply the final drop list (constant/redundant columns) consistently
+- [ ] Add a held-out test-set evaluation with confusion matrix and classification report
+- [ ] Split the notebook into standalone scripts (`combine_dataset.py`, `train_model.py`) for reuse outside Jupyter
+- [ ] Add unit tests for the EDA/feature-engineering helper functions
+
+## 🧰 Tech Stack
+
+`Python` · `pandas` · `NumPy` · `scikit-learn` · `XGBoost` · `LightGBM` · `CatBoost` · `Matplotlib` · `Seaborn` · `joblib`
+
+## 📚 Reference
+
 Dataset: Bergs, T. et al., *System-level Manufacturing and Automation Research Testbed (SMART)*, University of Michigan — [Tool Wear Detection in CNC Mill](https://www.kaggle.com/datasets/shasun/tool-wear-detection-in-cnc-mill).
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## 👤 Author
+
+**Muhammet Ali Aykanat**
+
+[![GitHub](https://img.shields.io/badge/GitHub-MAAykanat-181717?logo=github)](https://github.com/MAAykanat)
